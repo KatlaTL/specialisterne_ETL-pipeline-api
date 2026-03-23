@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model BME280 {
+  BME280_id   Int      @id @default(autoincrement())
+  reader_id   String   @unique @db.Uuid
+  location    String   @db.VarChar(7)
+  humidity    Decimal  @db.Decimal(20, 13)
+  pressure    Decimal  @db.Decimal(20, 13)
+  temperature Decimal  @db.Decimal(20, 13)
+  observed_at DateTime @db.Timestamptz(6)
+  pulled_at   DateTime @db.Timestamptz(6)
+}
+
+model DMI {
+  DMI_id       Int      @id @default(autoincrement())
+  dmi_id       String   @unique @db.Uuid
+  parameter_id String   @db.VarChar(50)
+  value        Float
+  observed_at  DateTime @db.Timestamptz(6)
+  pulled_at    DateTime @db.Timestamptz(6)
+  station_id   Int
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model DS18B20 {
+  DS18B20_id  Int      @id @default(autoincrement())
+  reader_id   String   @unique @db.Uuid
+  location    String   @db.VarChar(7)
+  temperature Decimal  @db.Decimal(20, 13)
+  observed_at DateTime @db.Timestamptz(6)
+  pulled_at   DateTime @db.Timestamptz(6)
+}
+
+model SCD41 {
+  SCD41_id    Int      @id @default(autoincrement())
+  reader_id   String   @unique @db.Uuid
+  co2         Int
+  humidity    Decimal  @db.Decimal(20, 13)
+  temperature Decimal  @db.Decimal(20, 13)
+  observed_at DateTime @db.Timestamptz(6)
+  pulled_at   DateTime @db.Timestamptz(6)
+}
