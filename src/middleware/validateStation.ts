@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { ApiSensorSchema } from "../schemas/apiQuerySchema";
+import { ApiStationSchema } from "../schemas/apiStationSchema";
 
-export const validateSensor = (req: Request, res: Response, next: NextFunction) => {
-    const { sensor } = req.params;
+export const validateStation = (req: Request, res: Response, next: NextFunction) => {
+    const { station } = req.params;
 
-    const result = ApiSensorSchema.safeParse(sensor);
+    const result = ApiStationSchema.safeParse(station);
 
     if (!result.success) {
         return res.status(404).json({

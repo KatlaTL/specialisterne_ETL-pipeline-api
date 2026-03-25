@@ -33,4 +33,4 @@ export const ApiQuerySchema = z.object({
     }
 );
 
-export const ApiSensorSchema = z.enum(PrismaModelKeysArray);
+export const ApiStationSchema = z.enum(PrismaModelKeysArray);

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { ApiQuerySchema } from "../schemas/apiQuerySchema";
+import { ApiQuerySchema } from "../schemas/apiStationSchema";
 
 export const validateQueryParams = (req: Request, res: Response, next: NextFunction) => {
     const result = ApiQuerySchema.safeParse(req.query);
