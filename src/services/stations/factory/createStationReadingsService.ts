@@ -14,10 +14,11 @@ const stationMap: Record<LowercasePrismaModelKeys, PrismaModelKeys> = {
     scd41: "sCD41"
 }
 
-export const createStationReadingService = <K extends LowercasePrismaModelKeys>(db: PrismaClientType, modelKey: K) => {
+export const createStationReadingsService = <K extends LowercasePrismaModelKeys>(db: PrismaClientType, modelKey: K) => {
+    const model = db[stationMap[modelKey]] as DbModelKeyType;
+
     return {
         fetchReadingsByQuery: async (queryData: ApiQueryType) => {
-            const model = db[stationMap[modelKey]] as DbModelKeyType;
             return model.findMany({
                 ...(queryData.limit && { take: queryData.limit }),
                 where: {
@@ -30,6 +31,9 @@ export const createStationReadingService = <K extends LowercasePrismaModelKeys>(
                     observed_at: queryData.order ?? "asc"
                 }
             })
+        },
+        fetchlatestReadings: async () => {
+            return model.findFirst()
         }
     }
 }
