@@ -1,7 +1,7 @@
+import { ApiQueryType } from "../types/apiTypes"
 import { PrismaClientType } from "../types/prismaTypes"
+import { createService } from "./factory/createService"
 
 export const createBme280Service = (db: PrismaClientType) => ({
-    fetchAllBme280Readings: async () => {
-        return db.bME280.findMany()
-    }
+    ...createService(db, "bME280")
 })

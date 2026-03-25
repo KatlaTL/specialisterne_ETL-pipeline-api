@@ -1,7 +1,6 @@
 import { PrismaClientType } from "../types/prismaTypes"
+import { createService } from "./factory/createService"
 
 export const createScd41Service = (db: PrismaClientType) => ({
-    fetchAllScd41Readings: async () => {
-        return db.sCD41.findMany()
-    }
+    ...createService(db, "sCD41")
 })
