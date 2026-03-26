@@ -1,22 +1,41 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import routes from './routes';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from "@as-integrations/express5";
+import { typeDefs } from "./graphql/schema";
+import { resolvers } from "./graphql/resolvers";
+import { validateQueryParams } from './middleware';
 
 dotenv.config();
 
-const app = express();
-app.use(express.json());
+const startServer = async () => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
 
-// Routes
-app.use('/api', routes);
+  await server.start();
 
-// Basic test route
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello from TypeScript Express API!');
-});
+  const app = express();
+  app.use(express.json());
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  // Routes
+  app.use("/api", routes);
+  app.use("/graphql", express.json(), validateQueryParams, expressMiddleware(server));
+
+  // Basic test route
+  app.get("/", (req: Request, res: Response) => {
+    res.send("Hello from TypeScript Express API!");
+  });
+
+  // Start server
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+startServer().catch(err => {
+  console.error("Error starting server:", err);
 });

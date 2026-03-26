@@ -10,4 +10,6 @@ export type PrismaModelKeys = {
 
 export type LowercasePrismaModelKeys = Lowercase<PrismaModelKeys>;
 
+export type PrismaGraphQL = `${Uppercase<PrismaModelKeys>}Readings`;
+
 export const PrismaModelKeysArray: LowercasePrismaModelKeys[] = ["bme280", "dmi", "ds18b20", "scd41"] as const
