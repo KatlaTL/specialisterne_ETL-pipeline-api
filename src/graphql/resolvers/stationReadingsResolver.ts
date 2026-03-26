@@ -20,7 +20,6 @@ export const createStationReadingsResolver = (queryName: PrismaGraphQL) => {
 
         return await service.fetchReadingsByQuery(args, requestedFields);
     }
-
 };
 
 export const createLatestStationReadingsResolver = (queryName: PrismaGraphQL) => {
@@ -31,5 +30,4 @@ export const createLatestStationReadingsResolver = (queryName: PrismaGraphQL) =>
         
         return await service.fetchlatestReadings(requestedFields);
     }
-
 };
