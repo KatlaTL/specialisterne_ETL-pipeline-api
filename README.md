@@ -17,6 +17,7 @@ Made as part of Specialisterne Academy on the data collected from this repositor
 - [GraphQL Endpoint](#graphql-endpoint)  
 - [Swagger Documentation](#swagger-documentation)  
 - [Technologies](#technologies)
+- [Next Development](#next-development)
 
 ---
 
@@ -148,5 +149,14 @@ Interactive API documentation is available via Swagger UI:
 - Swagger (OpenAPI)
 - Prisma
 - Zod
-  
+
+## Next Development
+
+This section outlines future improvements and features for the API:
+
+- Add authentication & authorization (JWT or OAuth2)
+- Performance optimizations and caching  
+- Add unit and integration tests with Jest  
+- Dockerization for easier deployment  
+
 [Back to Top](#specialisterne_etl-pipeline-api)
