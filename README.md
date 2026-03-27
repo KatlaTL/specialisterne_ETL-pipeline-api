@@ -1,6 +1,8 @@
 # Specialisterne_ETL-pipeline-api
 
-A small Node.js API built with **Express** and **TypeScript**, supporting both **REST** and **GraphQL** endpoints. API documentation is available via **Swagger**.
+A small Node.js API built with **Express** and **TypeScript**, supporting both **REST** and **GraphQL** endpoints. \
+API documentation is available via **Swagger**.
+
 Made as part of Specialisterne Academy on the data collected from this repository: https://github.com/KatlaTL/Specialisterne-Case---ETL-Pipeline 
 
 ---
