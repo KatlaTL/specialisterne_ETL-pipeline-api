@@ -5,7 +5,8 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from "@as-integrations/express5";
 import { typeDefs } from "./graphql/schema";
 import { resolvers } from "./graphql/resolvers";
-import { validateQueryParams } from './middleware';
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./swagger/swagger";
 
 dotenv.config();
 
@@ -24,10 +25,13 @@ const startServer = async () => {
   app.use("/api", routes);
   app.use("/graphql", express.json(), expressMiddleware(server));
 
-  // Basic test route
-  app.get("/", (req: Request, res: Response) => {
-    res.send("Hello from TypeScript Express API!");
-  });
+  // Swagger API docs
+  app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    swaggerOptions: {
+      operationsSorter: "none",
+      tagsSorter: "none",
+    },
+  }));
 
   // Start server
   const PORT = process.env.PORT || 3000;

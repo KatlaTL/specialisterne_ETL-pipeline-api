@@ -5,8 +5,37 @@ import stationRoutes from './stations/station';
 
 const router = Router();
 
-// Base path: /stations
+/**
+ * @openapi
+ * /api/stations:
+ *   get:
+ *     summary: Get all stations
+ *     tags:
+ *       - Stations
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.use('/stations', stationsRoutes);
+
+/**
+ * @openapi
+ * /api/stations/{station}:
+ *   get:
+ *     summary: Get station by ID
+ *     tags:
+ *       - Stations
+ *     parameters:
+ *       - in: path
+ *         name: station
+ *         required: true
+ *         description: Station name
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.use('/stations', stationRoutes);
 
 export default router;
