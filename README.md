@@ -155,6 +155,7 @@ Interactive API documentation is available via Swagger UI:
 This section outlines future improvements and features for the API:
 
 - Add authentication & authorization (JWT or OAuth2)
+- Add additional query options
 - Performance optimizations and caching  
 - Add unit and integration tests with Jest  
 - Dockerization for easier deployment  
