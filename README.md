@@ -60,6 +60,7 @@ npm run dev
 npm run build
 npm run start
 ```
+[Back to Top](#specialisterne_etl-pipeline-api)
 
 ## REST endpoints
 All REST endpoints are prefixed with /api.
@@ -113,6 +114,7 @@ Example response get latest readings stations (`GET /api/stations/dmi/readings/l
   "station_id": 6181
 }
 ```
+[Back to Top](#specialisterne_etl-pipeline-api)
 
 ## GraphQL Endpoint
 POST /graphql
@@ -144,3 +146,5 @@ Interactive API documentation is available via Swagger UI:
 - Swagger (OpenAPI)
 - Prisma
 - Zod
+  
+[Back to Top](#specialisterne_etl-pipeline-api)
