@@ -120,8 +120,8 @@ Example response get latest readings stations (`GET /api/stations/dmi/readings/l
 [Back to Top](#specialisterne_etl-pipeline-api)
 
 ## GraphQL Endpoint
-POST /graphql
-You can query stations and readings flexibly. Example:
+POST /graphql \
+You can query station readings flexibly. Example:
 ```
 query {
     DMIReadings(limit: 5) {
