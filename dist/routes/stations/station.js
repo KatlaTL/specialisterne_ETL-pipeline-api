@@ -1,16 +1,16 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 // src/routes/stations/station.ts
-import { Router } from 'express';
-import { validateStation } from '../../middleware';
-import readingsRoutes from './readings/readings';
-import { getStation } from '../../controllers/stations/stationController';
-
+const express_1 = require("express");
+const middleware_1 = require("../../middleware");
+const readings_1 = __importDefault(require("./readings/readings"));
+const stationController_1 = require("../../controllers/stations/stationController");
 // Import all routes here
-const router = Router({ mergeParams: true });
-
-
-router.get('/:station', validateStation, getStation);
-
-
+const router = (0, express_1.Router)({ mergeParams: true });
+router.get('/:station', middleware_1.validateStation, stationController_1.getStation);
 /**
  * @openapi
  * /api/stations/{station}/readings:
@@ -22,7 +22,7 @@ router.get('/:station', validateStation, getStation);
  *       - in: path
  *         name: station
  *         required: true
- *         description: Station name to lowercase
+ *         description: Station name
  *         schema:
  *           type: string
  *       - in: query
@@ -57,6 +57,5 @@ router.get('/:station', validateStation, getStation);
  *       200:
  *         description: Success
  */
-router.use('/:station/readings', readingsRoutes);
-
-export default router;
+router.use('/:station/readings', readings_1.default);
+exports.default = router;

@@ -23,15 +23,19 @@ const startServer = async () => {
 
   // Routes
   app.use("/api", routes);
-  app.use("/graphql", express.json(), expressMiddleware(server));
-
-  // Swagger API docs
-  app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
     swaggerOptions: {
       operationsSorter: "none",
       tagsSorter: "none",
     },
   }));
+
+  app.use("/graphql", express.json(), expressMiddleware(server));
+
+  // Basic route
+  app.get("/", (req: Request, res: Response) => {
+    res.send("You can view the API Swagger documentation at /api-docs");
+  });
 
   // Start server
   const PORT = process.env.PORT || 3000;

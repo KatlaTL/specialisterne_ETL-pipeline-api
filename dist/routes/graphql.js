@@ -1,13 +1,13 @@
-import { Router } from "express";
-
-const router = Router();
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const router = (0, express_1.Router)();
 /**
  * @openapi
  * /graphql:
  *   post:
  *     summary: GraphQL endpoint
- *     tags: 
+ *     tags:
  *     - GraphQL
  *     description: |
  *       Use Apollo Sandbox or GraphQL clients to explore the GraphQL schema.
@@ -42,4 +42,4 @@ const router = Router();
  *             schema:
  *               type: object
  */
-export default router;
+exports.default = router;

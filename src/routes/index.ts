@@ -29,7 +29,7 @@ router.use('/stations', stationsRoutes);
  *       - in: path
  *         name: station
  *         required: true
- *         description: Station name
+ *         description: Station name to lowercase
  *         schema:
  *           type: string
  *     responses:
