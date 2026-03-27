@@ -22,7 +22,7 @@ const startServer = async () => {
 
   // Routes
   app.use("/api", routes);
-  app.use("/graphql", express.json(), validateQueryParams, expressMiddleware(server));
+  app.use("/graphql", express.json(), expressMiddleware(server));
 
   // Basic test route
   app.get("/", (req: Request, res: Response) => {

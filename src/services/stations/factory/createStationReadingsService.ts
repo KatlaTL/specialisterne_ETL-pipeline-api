@@ -52,7 +52,7 @@ export const createStationReadingsService = <K extends LowercasePrismaModelKeys>
             } catch (error: any) {
                 console.error("Error fetching readings:", error.message);
 
-                throw new Error(`Failed to fetch readings: ${error.message}`)
+                throw new Error(`Failed to fetch readings: ${error.message}`);
             }
         }
     }
